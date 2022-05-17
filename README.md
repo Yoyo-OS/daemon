@@ -1,6 +1,6 @@
-# CutefishOS Daemon
+# YoyoOS Daemon
 
-CutefishOS backend
+YoyoOS backend
 
 ## Dependencies
 

@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=com.yoyo.Daemon
+Interface=com.yoyo.Daemon
+Exec=/usr/bin/yoyo-daemon
+User=root

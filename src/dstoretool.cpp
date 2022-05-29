@@ -3,6 +3,11 @@
 DStoreTool::DStoreTool(QObject *parent)
     : QObject(parent)
 {
+    run();
+}
+
+void DStoreTool::run()
+{
     cleanLink();
     for (auto &a : enumAppInfoList()) {
         linkApp(a);

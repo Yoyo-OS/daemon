@@ -17,7 +17,7 @@ class DStoreTool : public QObject
     Q_OBJECT
 
 public:
-
+    void run();
 
 private:
     QList<QJsonObject> enumAppInfoList()

@@ -26,6 +26,7 @@ QList<QJsonObject> DStoreTool::enumAppInfoList()
     }
     return appInfoList;
 }
+
 //这段是去找appid和info，没看懂用来干啥的，在此之后info文件也没再用过
 //可能以后版本的实现会用到，等官方加功能再说
 void DStoreTool::linkDir(const QString &source, const QString &target)

@@ -17,18 +17,17 @@ class DStoreTool : public QObject
     Q_OBJECT
 
 public:
+    explicit DStoreTool(QObject *parent = nullptr);
     void run();
 
 private:
-    QList<QJsonObject> enumAppInfoList()
-    void linkDir(const QString &source, const QString &target)
-    void setRpath(const QString &file, const QString &path)
-    QString getGlic()
-    void linkApp(const QJsonObject &app)
-    void cleanLink()
-    void update()
-private:
-
+    QList<QJsonObject> enumAppInfoList();
+    void linkDir(const QString &source, const QString &target);
+    void setRpath(const QString &file, const QString &path);
+    QString getGlic();
+    void linkApp(const QJsonObject &app);
+    void cleanLink();
+    void update();
 };
 
 #endif // DSTORETOOL_H

@@ -67,7 +67,7 @@ void DStoreTool::linkDir(const QString &source, const QString &target)
 }
 
 //reset Dynamic library rpath
-void DStoreTool:setRpath(const QString &file, const QString &path)
+void DStoreTool::setRpath(const QString &file, const QString &path)
 {
     if (!QFileInfo::exists(path))
         return;
@@ -77,7 +77,7 @@ void DStoreTool:setRpath(const QString &file, const QString &path)
     p.waitForFinished();
 }
 
-QString DStoreTool:getGlic()
+QString DStoreTool::getGlic()
 {
     //get arch & glibc
     QProcess p;
@@ -87,7 +87,7 @@ QString DStoreTool:getGlic()
     return p.readAll();
 }
 
-void DStoreTool:linkApp(const QJsonObject &app)
+void DStoreTool::linkApp(const QJsonObject &app)
 {
     auto appID = app.value("appid").toString();
     auto appEntriesDir = QDir("/opt/apps/" + appID + "/entries");
@@ -134,7 +134,7 @@ void DStoreTool:linkApp(const QJsonObject &app)
     }
 }
 
-void DStoreTool:cleanLink()
+void DStoreTool::cleanLink()
 {
     auto cleanDirBrokenLink = [](const QString &dir) {
         QProcess p;
@@ -161,7 +161,7 @@ void DStoreTool:cleanLink()
     cleanDirBrokenLink("/etc/fonts/conf.d");
 }
 
-void DStoreTool:update()
+void DStoreTool::update()
 {
     QProcess p;
     auto cmd = "glib-compile-schemas /usr/share/glib-2.0/schemas/";

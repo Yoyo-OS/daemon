@@ -27,15 +27,6 @@ Application::Application(int &argc, char **argv)
 {
 }
 
-void Application::dappWatch()
-{
-    m_watcher = new QFileSystemWatcher(this);
-    m_watcher->addPath("/opt/apps");
-    connect(m_watcher,&QFileSystemWatcher::directoryChanged,this,[=](const QString &path){
-        m_dstoreTool->run();
-    });
-}
-
 int Application::run()
 {
 //    if (!QDBusConnection::systemBus().registerService("com.yoyo.Daemon")) {
@@ -47,7 +38,5 @@ int Application::run()
 //    qDebug() << QDBusConnection::systemBus().registerService("com.yoyo.Daemon") << " registerService";
     m_appManager = new AppManager(this);
     m_dstoreTool = new DStoreTool(this);
-
-    dappWatch();
     return QCoreApplication::exec();
 }

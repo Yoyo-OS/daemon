@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QDirIterator>
 #include <QProcess>
+#include <QFileSystemWatcher>
 
 #include <unistd.h>
 
@@ -21,6 +22,7 @@ public:
     void run();
 
 private:
+    QFileSystemWatcher * m_watcher;
     QList<QJsonObject> enumAppInfoList();
     void linkDir(const QString &source, const QString &target);
     void setRpath(const QString &file, const QString &path);

@@ -4,6 +4,11 @@ DStoreTool::DStoreTool(QObject *parent)
     : QObject(parent)
 {
     run();
+    m_watcher = new QFileSystemWatcher(this);
+    m_watcher->addPath("/opt/apps");
+    connect(m_watcher,&QFileSystemWatcher::directoryChanged,this,[=](const QString &path){
+        run();
+    });
 }
 
 void DStoreTool::run()

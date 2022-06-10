@@ -21,7 +21,6 @@
 #define APPLICATION_H
 
 #include <QCoreApplication>
-#include <QFileSystemWatcher>
 #include "appmanager.h"
 #include "dstoretool.h"
 
@@ -33,10 +32,8 @@ public:
     explicit Application(int &argc, char **argv);
 
     int run();
-    void dappWatch();
 
 private:
-    QFileSystemWatcher * m_watcher;
     AppManager *m_appManager;
     DStoreTool *m_dstoreTool;
 

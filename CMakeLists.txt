@@ -23,7 +23,6 @@ set(PROJECT_SOURCES
         src/main.cpp
         src/application.cpp
         src/appmanager.cpp
-        src/dstoretool.cpp
 )
 
 set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)

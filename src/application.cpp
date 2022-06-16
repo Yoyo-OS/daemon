@@ -37,6 +37,5 @@ int Application::run()
 
 //    qDebug() << QDBusConnection::systemBus().registerService("com.yoyo.Daemon") << " registerService";
     m_appManager = new AppManager(this);
-    m_dstoreTool = new DStoreTool(this);
     return QCoreApplication::exec();
 }

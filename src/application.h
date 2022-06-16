@@ -22,7 +22,6 @@
 
 #include <QCoreApplication>
 #include "appmanager.h"
-#include "dstoretool.h"
 
 class Application : public QCoreApplication
 {
@@ -35,7 +34,6 @@ public:
 
 private:
     AppManager *m_appManager;
-    DStoreTool *m_dstoreTool;
 
 };
 

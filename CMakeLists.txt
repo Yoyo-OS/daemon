@@ -45,3 +45,5 @@ install(TARGETS ${TARGET} DESTINATION "/usr/bin/")
 
 install(FILES src/com.yoyo.Daemon.conf DESTINATION "/etc/dbus-1/system.d/")
 install(FILES src/com.yoyo.Daemon.service DESTINATION "/usr/share/dbus-1/system-services/")
+install(FILES src/yoyo-permission-surveillance DESTINATION "/usr/bin/")
+install(FILES src/yoyo-getfastmirror DESTINATION "/usr/bin/")

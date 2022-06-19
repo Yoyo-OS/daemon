@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-import subprocess
+import os
 import time
 import dbus
+import pyinotify
+import pathlib
 
 
-is_send = None
-
-
-def sendLyrics(text):
+def sendDbusMessage(text):
     bus = dbus.SessionBus()
     lyrics = bus.get_object('com.yoyo.Statusbar', '/Statusbar/PermissionSurveillance')
     iface = dbus.Interface(lyrics, dbus_interface='com.yoyo.Statusbar')
@@ -16,34 +15,58 @@ def sendLyrics(text):
 
 
 def get_app_and_camera():
-    try:
-        app_lst = []
-        shell_return = subprocess.check_output(["bash", "-c", "lsof /dev/video*"]).decode()
-        return_lst = shell_return.split("\n")
-        del return_lst[0]
-        tmp_old = None
-        for _i in return_lst:
-            __tmp_split = _i.split(" ")
-            if __tmp_split[0] == tmp_old:
-                ...
-            elif __tmp_split[0] != "":
-                app_lst.append(__tmp_split[0])
-                tmp_old = __tmp_split[0]
-        return app_lst
-    except subprocess.CalledProcessError:
+    app_lst = []
+    shell_return = "".join(os.popen("bash -c 'lsof /dev/video*'").readlines())
+    if shell_return == "":
         return None
+    return_lst = shell_return.split("\n")
+    del return_lst[0]
+    tmp_old = None
+    for _i in return_lst:
+        __tmp_split = _i.split(" ")
+        if __tmp_split[0] == tmp_old:
+            ...
+        elif __tmp_split[0] != "":
+            app_lst.append(__tmp_split[0])
+            tmp_old = __tmp_split[0]
+    return app_lst
+ 
+class MyEventHandler(pyinotify.ProcessEvent):
+    is_send = None
+    def process_IN_OPEN(self,event):
+        __tmp_get = get_app_and_camera()
+        if self.is_send == __tmp_get:
+            ...
+        elif __tmp_get is None:
+            reta = "{U-APPLE_QAQ-U}"
+            self.is_send = __tmp_get
+            sendDbusMessage(reta)
+            # print(reta)
+        else:
+            self.is_send = __tmp_get
+            reta = "、".join(__tmp_get)
+            sendDbusMessage(reta)
+            # print(reta)
+    def process_IN_CLOSE_WRITE(self,event):
+        __tmp_get = get_app_and_camera()
+        if self.is_send == __tmp_get:
+            ...
+        elif __tmp_get is None:
+            reta = "{U-APPLE_QAQ-U}"
+            self.is_send = __tmp_get
+            sendDbusMessage(reta)
+            # print(reta)
+        else:
+            self.is_send = __tmp_get
+            reta = "、".join(__tmp_get)
+            sendDbusMessage(reta)
+            # print(reta)
 
-
-while True:
-    __tmp_get = get_app_and_camera()
-    if is_send == __tmp_get:
-        ...
-    elif __tmp_get is None:
-        ret = "{U-APPLE_QAQ-U}"
-        is_send = __tmp_get
-        sendLyrics(ret)
-    else:
-        is_send = __tmp_get
-        ret = "、".join(__tmp_get)
-        sendLyrics(ret)
-    time.sleep(5)
+wm = pyinotify.WatchManager()
+notifier = pyinotify.Notifier(wm)
+p = pathlib.Path("/dev/")
+ret = p.glob("video*")
+for item in ret:
+    print(item)
+    wm.watch_transient_file(item,pyinotify.IN_OPEN|pyinotify.IN_CLOSE_WRITE, MyEventHandler)
+notifier.loop()

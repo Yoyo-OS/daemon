@@ -39,7 +39,7 @@ while True:
     if is_send == __tmp_get:
         ...
     elif __tmp_get is None:
-        ret = "0"
+        ret = "{U-APPLE_QAQ-U}"
         is_send = __tmp_get
         sendLyrics(ret)
     else:

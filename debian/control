@@ -5,6 +5,7 @@ Maintainer: YoyoOS <support@yoyoos.com>
 Build-Depends: 
 		cmake,
 		libqapt-dev,
+    python3-pyinotify,
 		qtbase5-dev,
 		qtdeclarative5-dev,
 		qtquickcontrols2-5-dev,
@@ -23,6 +24,7 @@ Depends: qml-module-qtquick-controls2,
          qml-module-qtqml,
          qml-module-qtquick-window2,
          qml-module-qtquick-shapes,
+         python3-pyinotify,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: YoyoOS Daemon.

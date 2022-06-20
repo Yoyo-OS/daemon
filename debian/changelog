@@ -1,3 +1,9 @@
+yoyo-daemon (0.9) unstable; urgency=high
+
+  * Update to 0.9
+
+ -- weilinfox <support@yoyoos.com>  Mon, 20 Jun 2022 11:30:14 +0800
+
 yoyo-daemon (0.8-1) UNRELEASED; urgency=medium
 
   * Update code structure

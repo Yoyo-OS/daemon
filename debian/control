@@ -5,10 +5,11 @@ Maintainer: YoyoOS <support@yoyoos.com>
 Build-Depends: 
 		cmake,
 		libqapt-dev,
-    python3-pyinotify,
+		python3-pyinotify,
 		qtbase5-dev,
 		qtdeclarative5-dev,
 		qtquickcontrols2-5-dev,
+		libkf5windowsystem-dev,
 		debhelper (>= 9)
 Standards-Version: 4.6.0
 Homepage: http://yoyoos.com

@@ -1,5 +1,7 @@
 # YoyoOS Daemon
 
+[![Build](https://github.com/Yoyo-OS/daemon/actions/workflows/build.yml/badge.svg)](https://github.com/Yoyo-OS/daemon/actions/workflows/build.yml)
+
 YoyoOS backend
 
 ## Dependencies
